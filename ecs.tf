@@ -8,10 +8,17 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 }
 
 
+# resource "aws_ecs_task_definition" "task_definition" {
+#   # family if required
+#   family                = "worker"
+#   container_definitions = file("./task_definition.json")
+# }
+
+
+
 resource "aws_ecs_task_definition" "task_definition" {
-  # family if required
   family                = "worker"
-  container_definitions = file("./task_definition.json")
+  container_definitions = data.template_file.task_definition_template.rendered
 }
 
 
