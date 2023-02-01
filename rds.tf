@@ -16,8 +16,9 @@ resource "aws_db_instance" "default" {
   db_name           = "mydb"
 
   # JUST FOR THE DEMO WE HARDCODED USERNAME AND PASSWORD
-  username = "admin"
-  password = "admin12345678"
+  # THAT IS NOT RECOMMENDED IN LIVE PRODUCTION
+  username = var.rds_username
+  password = var.rds_password
   ######################################################
   publicly_accessible  = true
   parameter_group_name = "default.mysql5.7"
