@@ -1,21 +1,12 @@
-# for ECS Cluster allow ssh and HTTPS for Container registery
+# for ECS Cluster allow port 80
 resource "aws_security_group" "ecs_sg" {
   vpc_id = module.network.vpc_id
 
   ingress {
-    from_port = 22
-    to_port   = 22
+    from_port = 80
+    to_port   = 80
     protocol  = "tcp"
     # it should be modified in production
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp"
-    # it should be modified in production
-
     cidr_blocks = ["0.0.0.0/0"]
   }
 
