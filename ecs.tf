@@ -24,8 +24,8 @@ resource "aws_ecs_task_set" "example" {
   task_definition = aws_ecs_task_definition.task_definition.arn
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.example.arn
-    container_name   = "mongo"
+    target_group_arn = aws_lb_target_group.alb-example.arn
+    container_name   = "nodejs"
     container_port   = 8080
   }
 }
