@@ -7,7 +7,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 resource "aws_ecs_task_definition" "task_definition" {
   # family if required
   family                = "worker"
-  container_definitions = file("./task_definition.json")
+  container_definitions = file("./container_specs.json")
 }
 
 
@@ -15,7 +15,7 @@ resource "aws_ecs_service" "worker" {
   name            = "worker"
   cluster         = aws_ecs_cluster.ecs_cluster.id
   task_definition = aws_ecs_task_definition.task_definition.arn
-  desired_count   = 2
+  desired_count   = 1
 }
 
 resource "aws_ecs_task_set" "example" {
